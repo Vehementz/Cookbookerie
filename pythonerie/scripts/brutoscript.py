@@ -48,8 +48,13 @@ crack_dict()
 
 print("durée : " + str(time.time() - debut) + " secondes")
 # test
-def mot_aleatoire():
+def mot_aleatoire(md5, length, currpass=[]):
     lettres = string.ascii_letters
+
+    if length >= 1:
+        if len(currpass) == 0:
+            curpass = ['a' for _ in range(length)]
+            crack_incr(md5n, length, curpass)
     suiv = ""
     resultat = ""
     for i in range(len(mot_de_passe)):
@@ -57,6 +62,7 @@ def mot_aleatoire():
             suiv = random.choice(lettres)        
             suiv = random.choice(lettres)
         resultat += suiv
+    
 
 
 debut = time.time()
