@@ -25,6 +25,12 @@ def main():
 
 print (main())
 
+
+
+
+
+
+
 #### SOME DIFFERENTS THINGS CAN HELP 
 
 # pip3 install webdriver-manager
