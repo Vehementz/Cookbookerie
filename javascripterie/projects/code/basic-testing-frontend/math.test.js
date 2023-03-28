@@ -4,8 +4,17 @@ import { add } from './src/math.js';
 
 
 it('shold summarize all number values in an array', () => {
-    const result = add([1,2,3]); 
-    expect(result).toBe(6);
+    // Arrange
+    const numbers = [1, 2, 3];
+    const expectedResult = numbers.reduce(
+        (prevValue, curValue) => prevValue + curValue, 
+    0
+);
+    // Act 
+    const result = add(numbers); 
+
+    // Assert
+    expect(result).toBe(expectedResult);
 });
 
 
