@@ -21,3 +21,6 @@ sha256sum ye.txt
 
 ## Create symbolic link
 ln -s /home/clement/Bureau/yu/ya/yu/ye ~/shortcut 
+
+curl -C  -H "Authorization: Bearer ya29.beartruc" https://www.googleapis.com/drive/v3/files/truc -o namefile.file.vmdk
+
