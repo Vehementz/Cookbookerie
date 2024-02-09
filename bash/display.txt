@@ -1,0 +1,7 @@
+# Print Second Column of top 100 rows from '/var/log/dnf.log' file ?
+awk '{print $2}' /var/log/auth.log | head -100
+
+# Print second and third column from '/var/log/dnf.log' file , print only for top 50 rows ?
+
+awk '{print $2, $3}' /var/log/auth.log | head -50
+
