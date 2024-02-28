@@ -1,0 +1,1 @@
+Un livre sur les bases de linux duquel tombe un bout de papier sur lequel est écrit : gpg <fichier>.gpg
