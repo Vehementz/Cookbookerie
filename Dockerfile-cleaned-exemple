@@ -1,0 +1,12 @@
+FROM nginx:latest
+# Copie du fichier index.html local vers le répertoire de configuration Nginx dans l'image
+# Supprimer les caches de package :
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Supprimer les fichiers temporaires :
+RUN rm -rf /tmp/*
+# Supprimer les logs :
+RUN rm -rf /var/log/*
+# Supprimer les caches de langage
+RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* \ /var/cache/apt/archives/* /tmp/* /var/tmp/*
+COPY index.html /usr/share/nginx/html
+EXPOSE 80
