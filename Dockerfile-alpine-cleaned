@@ -1,0 +1,8 @@
+# Utiliser Alpine pour sa taille réduite
+FROM alpine:latest
+
+# Nettoyer les caches de package inutiles
+RUN apk --no-cache add ca-certificates && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/* /var/tmp/ && \ 
+    rm -rf /var/log/*
