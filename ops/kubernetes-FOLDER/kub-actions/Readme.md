@@ -15,3 +15,7 @@ kubectl get services
 kubectl create deployment first-app --image=i1,i2,i3
 ```
 
+```
+kubectl expose deployment first-app --port=... --type=LoadBalancer
+```
+
