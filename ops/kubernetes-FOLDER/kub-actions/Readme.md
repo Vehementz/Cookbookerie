@@ -3,12 +3,17 @@ Apply the deployment from the deployment.yaml :
 kubectl apply -f=deployment.yaml
 ```
 
+```
+kubectl apply -f service.yaml
+```
+kubectl get services
+
+
 
 kubectl get deployments
 
 kubectl get pods
 
-kubectl get services
 
 
 ```
