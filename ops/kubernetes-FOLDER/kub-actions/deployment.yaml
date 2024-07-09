@@ -5,17 +5,19 @@ metadata:
 spec:
   replicas: 1
   selector:
+    # matchExpressions:
     matchLabels:
       app: second-app
       tier: backend
   template:
     metadata:
-      labels:
+      labels: 
         app: second-app
         tier: backend
+        training: training-app
     spec:
       containers:
         - name: second-node
-          image: academind/kub-first-app:2
+          image: academind/kub-first-app:2 ## 2 is a tag
         # - name: ...
         #   image: ...
