@@ -1,2 +1,6 @@
 ---
 # vars file for roles/gitlab-docker
+- hosts: localhost
+  remote_user: root
+  roles:
+    - roles/gitlab-docker

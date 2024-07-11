@@ -1,2 +1,24 @@
 ---
 # tasks file for roles/gitlab-docker
+- name: Create the directory on the remote host
+  ansible.builtin.file:
+    path: "/home/container_apps/gitlab"
+    state: directory
+    owner: "{{ remote_user | default('root') }}"
+    group: "{{ remote_group | default('root') }}"
+    mode: '0755'  # Set the directory permissions to be executable
+    
+- name: Ensure the directory exists on the remote host
+  ansible.builtin.file:
+    path: "/home/container_apps/gitlab"
+    state: directory
+
+- name: Copy application files to the remote host
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "/home/container_apps/gitlab/{{ item.dest }}"
+    owner: "{{ remote_user | default(omit) }}"
+    group: "{{ remote_group | default(omit) }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop:
+    - { src: "files/Dockerfile", dest: "Dockerfile", mode: '0644' }  

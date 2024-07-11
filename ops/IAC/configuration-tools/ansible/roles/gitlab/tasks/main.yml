@@ -47,3 +47,43 @@
 - name: Reconfigure GitLab
   ansible.builtin.shell:
     cmd: gitlab-ctl reconfigure
+
+- name: Show password
+  ansible.builtin.shell: |
+    cat /etc/gitlab/initial_root_password | grep "Password"
+  
+- name: Enabling Let's Encrypt
+  ansible.builtin.lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    regexp: '^#?\s*letsencrypt\[''enable''\]\s*='
+    line: "letsencrypt['enable'] = [true]"
+    backrefs: yes
+
+- name: Enable automatic renewal of Let's Encrypt certificates
+  ansible.builtin.lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    regexp: '^#?\s*letsencrypt\[''auto_renew''\]\s*='
+    line: "letsencrypt['auto_renew'] = true"
+    backrefs: yes
+
+- name: Configure auto renew hour for Let's Encrypt
+  ansible.builtin.lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    regexp: '^#?\s*letsencrypt\[''auto_renew_hour''\]\s*='
+    line: "letsencrypt['auto_renew_hour'] = 5"
+    backrefs: yes
+
+- name: Configure auto renew day of month for Let's Encrypt
+  ansible.builtin.lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    regexp: '^#?\s*letsencrypt\[''auto_renew_day_of_month''\]\s*='
+    line: "letsencrypt['auto_renew_day_of_month'] = '*/6'"
+    backrefs: yes
+
+- name: Reconfigure GitLab to apply changes
+  ansible.builtin.shell:
+    cmd: gitlab-ctl reconfigure
+
+- name: Reconfigure GitLab to apply changes
+  ansible.builtin.shell:
+    cmd: gitlab-rake gitlab:check
