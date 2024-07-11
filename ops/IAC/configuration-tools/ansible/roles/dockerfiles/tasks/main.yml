@@ -1,0 +1,43 @@
+---
+- name: Create the directory on the remote host
+  ansible.builtin.file:
+    path: "/home/container_apps/"
+    state: directory
+    owner: "{{ remote_user }}"  # Optionally specify the owner
+    group: "{{ remote_group }}"  # Optionally specify the group
+    mode: '0755'  # Optionally specify the directory permissions
+
+- name: Ensure the directory exists on the remote host
+  ansible.builtin.file:
+    path: "/home/container_apps/"
+    state: directory
+
+- name: Copy application files to the remote host
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "/home/container_apps/{{ item.dest }}"
+    owner: "{{ remote_user | default(omit) }}"
+    group: "{{ remote_group | default(omit) }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop:
+    - { src: "files/Dockerfile.apache", dest: "Dockerfile.apache" }
+    - { src: "files/my-httpd.conf", dest: "my-httpd.conf" }
+    - { src: "files/Dockerfile.php", dest: "Dockerfile.php" }
+    - { src: "files/index.php", dest: "index.php" }
+    - { src: "files/docker-compose.yml", dest: "docker-compose.yml", mode: '0644' }
+
+- name: Build the Apache Docker image
+  ansible.builtin.shell:
+    cmd: "docker build -t my-apache-image -f /home/container_apps/Dockerfile.apache /home/container_apps/"
+    chdir: "/home/container_apps/"
+
+- name: Build the PHP Docker image
+  ansible.builtin.shell:
+    cmd: "docker build -t my-php-image -f /home/container_apps/Dockerfile.php /home/container_apps/"
+    chdir: "/home/container_apps/"
+
+- name: Run Docker Compose to start services
+  ansible.builtin.docker_compose:
+    project_src: "/home/container_apps"
+    state: present
+    restarted: yes

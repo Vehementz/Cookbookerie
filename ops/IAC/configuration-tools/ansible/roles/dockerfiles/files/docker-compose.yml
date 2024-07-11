@@ -1,0 +1,23 @@
+services:
+  apache:
+    build:
+      context: ./docker/apache
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./public-html:/usr/local/apache2/htdocs
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./docker/src:/var/www/html
+
+networks:
+  default:
+    external:
+      name: my-network

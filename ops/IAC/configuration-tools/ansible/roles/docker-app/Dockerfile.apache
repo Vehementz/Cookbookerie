@@ -1,0 +1,9 @@
+# Use the official Apache HTTPD image from the Docker Hub
+FROM httpd:2.4
+
+# Copy custom configuration file into the container
+COPY my-httpd.conf /usr/local/apache2/conf/httpd.conf
+
+# Copy the web content to the DocumentRoot (default: /usr/local/apache2/htdocs/)
+COPY ./public-html/ /usr/local/apache2/htdocs/
+
