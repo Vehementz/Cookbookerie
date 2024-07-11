@@ -15,4 +15,17 @@
           - /var/run/docker.sock:/var/run/docker.sock
           - portainer_data:/data
         restart_policy: always
+
+
+### Can add multiple container in the same playbook
+
+# # tasks file for roles/watchower
+# - name: Deploy Watchtower
+#   community.docker.docker_container:
+#     name: watchtower
+#     image: containrrr/watchtower
+#     command: --schedule "0 0 4 * * *" --debug
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+#     restart_policy: always
         
