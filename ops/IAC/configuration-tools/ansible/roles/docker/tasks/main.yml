@@ -25,11 +25,6 @@
 - name: Add Docker’s official GPG key
   ansible.builtin.shell: |
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-
-
-- name: Add Docker’s official GPG key
-  ansible.builtin.shell: |
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
   
 - name: Give specific rights
   ansible.builtin.shell: |
