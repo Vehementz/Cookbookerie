@@ -1,8 +1,3 @@
-Step 3: Run the Ansible Playbook
-Make sure your Ansible inventory file is correctly pointing to the LXC container and run:
-```
-ansible-playbook -i inventory playbook.yml
-```
 Role Name
 =========
 
