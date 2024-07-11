@@ -41,3 +41,13 @@
     project_src: "/home/container_apps"
     state: present
     restarted: yes
+
+
+
+#### Alternative 
+
+# - name: Start services using Docker Compose
+#   ansible.builtin.shell:
+#     cmd: "docker-compose up -d"
+#     chdir: "/home/container_apps/"
+
