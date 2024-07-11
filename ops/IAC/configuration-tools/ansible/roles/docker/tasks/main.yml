@@ -59,3 +59,15 @@
         service:
           name: docker
           state: restarted
+
+
+- name: Verify Docker Compose version
+  ansible.builtin.command:
+    cmd: "docker compose version"
+  register: compose_version
+  changed_when: false
+
+- name: Print Docker Compose version
+  ansible.builtin.debug:
+    msg: "{{ compose_version.stdout }}"
+    
