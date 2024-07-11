@@ -1,0 +1,3 @@
+ansible-playbook install_portainer.yaml
+ansible-playbook install_watchower.yaml
+ansible-playbook install_wordpress.yaml
