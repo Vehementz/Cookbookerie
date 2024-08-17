@@ -1,3 +1,4 @@
+# The following command can be used fo create a Secret  kubectl create secret tls <secret-name> --cert <certificate-pem-file> --key <private-key-pem-file>
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
