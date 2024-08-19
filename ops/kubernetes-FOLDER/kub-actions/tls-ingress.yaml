@@ -1,0 +1,17 @@
+# The following command can be used fo create a Secret  kubectl create secret tls <secret-name> --cert <certificate-pem-file> --key <private-key-pem-file>
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  tls:
+  - hosts:
+    - alpaca.example.com
+    secretName: tls-secret-name
+  rules:
+  - host: alpaca.example.com
+  http:
+    paths:
+    - backend:
+      serviceName: alpaca
+      servicePort: 8080
