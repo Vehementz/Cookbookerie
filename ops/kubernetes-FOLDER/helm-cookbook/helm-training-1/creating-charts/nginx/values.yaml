@@ -10,7 +10,7 @@ replicaCount: 3
 ## @param image.tag Nginx image tag to use
 image:
   name: nginx
-  tag: 1.27.0
+  tag: '1.27.0'
 
 
 ### NGINX containers ports
@@ -26,5 +26,6 @@ containerPorts:
 ## @param service.type The type of service in front of the NGINX pod
 ## @param service.port The port where the service is receiving traffic
 service:
+  enabled: false
   type: ClusterIP
   port: 80
