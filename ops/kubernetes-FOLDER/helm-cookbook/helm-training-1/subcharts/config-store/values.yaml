@@ -133,7 +133,17 @@ demo-subchart:
   customValue: 'hello from config-store'
 
 ##  Value that can be overwrited
-postgresql:
-  fullnameOverride: 'my new name'
+# postgresql:
+#   fullnameOverride: 'my new name'
 
+global:
+  defaultStorageClass: 'my-custom-storageclass'
+
+postgresql:
+  enabled: true 
+  # enabled: false
+
+# tags: 
+#   database: true # Can allow to toggle dependencies
+#   performance: true
 
