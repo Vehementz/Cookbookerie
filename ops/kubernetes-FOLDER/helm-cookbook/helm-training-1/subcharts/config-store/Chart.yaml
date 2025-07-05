@@ -32,7 +32,7 @@ dependencies:
     #   - performance
     # condition: postgresql.enabled
 
-  - name:  demo-subchart
-    version: '0.1.0'
-    # tags: 
-    #   - performance
+  # - name:  demo-subchart
+  #   version: '0.1.0'
+  #   # tags: 
+  #   #   - performance

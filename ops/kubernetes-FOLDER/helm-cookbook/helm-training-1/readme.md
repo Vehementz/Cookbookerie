@@ -57,3 +57,20 @@ helm dependency update
 ```
 helm template .
 ```
+
+
+
+```
+kubectl create secret generic postgres-creds --from-env-file=.env
+```
+
+
+```
+kubectl get secret
+```
+
+```
+kubectl describe secret postgres-creds
+```
+
+

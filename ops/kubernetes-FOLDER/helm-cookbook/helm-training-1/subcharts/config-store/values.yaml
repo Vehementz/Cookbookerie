@@ -123,24 +123,35 @@ tolerations: []
 
 affinity: {}
 
+
+
+postgresql:
+  auth:
+    username: config_store_user
+    database: config_store_db
+    existingSecret: postgres-crds
+    secretKeys:
+      userPasswordKey: password
+  fullnameOverride: postgresql-db
+
 # postgresql:
 #   auth:
 #     # Keep other values...
 #     usePasswordFiles: false
 #   # Keep other values...
 
-demo-subchart:
-  customValue: 'hello from config-store'
+# demo-subchart:
+#   customValue: 'hello from config-store'
 
 ##  Value that can be overwrited
 # postgresql:
 #   fullnameOverride: 'my new name'
 
-global:
-  defaultStorageClass: 'my-custom-storageclass'
+# global:
+#   defaultStorageClass: 'my-custom-storageclass'
 
-postgresql:
-  enabled: true 
+# postgresql:
+#   enabled: true 
   # enabled: false
 
 # tags: 
